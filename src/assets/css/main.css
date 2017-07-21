@@ -4630,8 +4630,8 @@ input[type=text], textarea {
 }
  
 input[type=text]:focus, textarea:focus {
-  box-shadow: 0 0 7px rgba(31, 137, 206, 1);
-  border: 1px solid rgba(240, 240, 240, 0.8);
+  /* box-shadow: 0 0 7px rgba(31, 137, 206, 1); */
+  /* border: 1px solid rgba(240, 240, 240, 0.8); */
 }
 
 p-dropdown.ng-dirty.ng-invalid > .ui-dropdown,

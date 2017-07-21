@@ -12,7 +12,7 @@ export class RolesService {
   constructor(public httpService: HttpService) { }
 
   getData(): Observable<object> {
-    return this.httpService.get(this.API_BASE_URL + 'app/getRoleList', {}, "Get Data");
+    return this.httpService.get(this.API_BASE_URL + 'roles/getData', {}, "Get Data");
   }
 
   submitAdd(inputData: any): Observable<object> {
@@ -20,7 +20,7 @@ export class RolesService {
       roleName: inputData.roleName,
       description: inputData.description
     }
-    return this.httpService.execute(this.API_BASE_URL + 'app/submitAddRole', data, "Add Data");
+    return this.httpService.execute(this.API_BASE_URL + 'roles/submitAdd', data, "Add Data");
   }
 
   submitEdit(idRole: string, inputData: any): Observable<object> {
@@ -29,14 +29,14 @@ export class RolesService {
       roleName: inputData.roleName,
       description: inputData.description
     }
-    return this.httpService.execute(this.API_BASE_URL + 'app/submitEditRole', data, "Update Data");
+    return this.httpService.execute(this.API_BASE_URL + 'roles/submitEdit', data, "Update Data");
   }
 
   submitDelete(idRole: string): Observable<object> {
     var data = {
       idRole: idRole,
     }
-    return this.httpService.execute(this.API_BASE_URL + 'app/submitDeleteRole', data, "Delete Data");
+    return this.httpService.execute(this.API_BASE_URL + 'roles/submitDelete', data, "Delete Data");
   }
 }
 

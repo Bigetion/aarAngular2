@@ -1,3 +1,3 @@
 export class AppConfig {
-   public static API_ENDPOINT='http://localhost/narmadaAPI/';
+   public static API_ENDPOINT='http://localhost/aarAPIv1/';
 }

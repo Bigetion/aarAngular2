@@ -12,14 +12,14 @@ export class PermissionsService {
   constructor(public httpService: HttpService) { }
 
   getPermissions(): Observable<object> {
-    return this.httpService.get(this.API_BASE_URL + 'app/getPermissions', {}, "Get Permissions");
+    return this.httpService.get(this.API_BASE_URL + 'permissions/getPermissions', {}, "Get Permissions");
   }
 
   updatePermissions(permissions): Observable<object> {
     let data = {
       permissions: permissions
     }
-    return this.httpService.execute(this.API_BASE_URL + 'app/updatePermissions', data, "Update Permissions");
+    return this.httpService.execute(this.API_BASE_URL + 'permissions/updatePermissions', data, "Update Permissions");
   }
 }
 
