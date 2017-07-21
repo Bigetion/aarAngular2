@@ -1,0 +1,24 @@
+<div class="col-md-12">
+  <h1 class="page-header">Permissions</h1>
+</div>
+<div class="col-md-12">
+  <table class="table table-striped panel">
+    <thead>
+      <tr>
+        <th>Permission Access</th>
+        <th *ngFor="let role of roleList">{{role.role_name}}</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let module of moduleList">
+      <tr>
+        <td [attr.colspan]="roleList.length+1">From Module <b>{{module.moduleName}}</b> and Controller <b>{{module.controllerName}}</b></td>
+      </tr>
+      <tr *ngFor="let functionItem of module.functionList">
+        <td>{{module.moduleName+'/'+module.controllerName+'/'+functionItem}}</td>
+        <td *ngFor="let role of roleList">
+          <p-checkbox [disabled]="role.id_role==1" binary="true" [(ngModel)]="functionModel[role.id_role][module.moduleName+'.'+module.controllerName+'.'+functionItem]" (click)="onChangeCheckBox(role.id_role,module.moduleName+'.'+module.controllerName+'.'+functionItem)"></p-checkbox>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

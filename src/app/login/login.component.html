@@ -1,0 +1,27 @@
+<div class="login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="assets/img/aar.png" /> AAR Framework
+    </div>
+    <div class="login-box-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+      <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm.value, myForm.valid)">
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control input-lg" placeholder="Username" autofocus style="font-size:20px" formControlName="username"/>
+          <control-messages [control]="myForm.controls.username"></control-messages>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control input-lg" placeholder="Password" style="font-size:20px" formControlName="password"/>
+          <control-messages [control]="myForm.controls.password"></control-messages>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="response.error_message" class="alert alert-danger mt-10" ng-style="{'margin-top':'10px'}">{{response.error_message}}</div>
+    <!--<div ng-if="message.success" class="alert alert-danger mt-10" ng-style="{'margin-top':'10px'}">{{message.success}}</div>-->
+  </div>
+</div>

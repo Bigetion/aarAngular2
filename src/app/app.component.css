@@ -1,0 +1,87 @@
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css'; 
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "~primeng/resources/themes/omega/theme.css";
+@import "~primeng/resources/primeng.min.css";
+
+ul {
+  margin : 0;
+}
+
+li {
+  cursor: pointer;
+}
+
+li:focus {
+  outline: none;
+}
+
+label {
+  display: block;
+}
+
+.panel {
+  border-radius: 0px;
+}
+
+mat-button {
+  background-color: #fff !important;
+}
+.ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell button {
+  margin-top: -5px;
+}
+
+.modal-header:before {
+  display: none;
+}
+.modal-backdrop.fade{
+  opacity: 0.5;
+}
+.modal-open .modal{
+  opacity: 1;
+}
+
+.modal-dialog {
+  margin: 100px auto;
+}
+
+.modal-header .close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0;
+}
+
+.nav-pills > li + li {
+  margin-left: 0px; 
+  border-top: 1px solid #F4F4F4;
+}
+
+.nav-pills .nav-link.active {
+    color: inherit; 
+    cursor: default;
+    border-left: 3px solid #0275d8;
+    background-color: transparent; 
+}
+
+.nav-pills > li > a {
+  border-top: none;
+}
+
+.ui-dropdown {
+  width: 100% !important;
+  padding: 3px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+.ui-dropdown .ui-dropdown-trigger .fa {
+  margin-top: 10px;
+}

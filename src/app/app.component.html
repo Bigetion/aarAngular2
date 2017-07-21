@@ -1,0 +1,45 @@
+<div class="content-wrapper">
+  <p-confirmDialog></p-confirmDialog>
+  <div>
+    <section class="content">
+      <div class="row">
+        <div class="col-md-2" *ngIf="route!='/login'">
+          <div class="box box-widget" ng-if="idRole!=2">
+            <div class="box-body box-profile" style="font-size: 16px">
+              <img src="assets/img/aar32.png"> AAR Framework
+            </div>
+            <div class="box-footer no-padding">
+              <!-- <ul class="nav nav-stacked">
+                <li [routerLink]="['/']" class="{{route=='' ? 'active' : ''}}"><a>Modules</a></li>
+                <li [routerLink]="['/roles']" class="{{route=='/roles' ? 'active' : ''}}"><a>Roles</a></li>
+                <li [routerLink]="['/permissions']" class="{{route=='/permissions' ? 'active' : ''}}"><a>Permissions</a></li>
+                <li [routerLink]="['/users']" class="{{route=='/users' ? 'active' : ''}}"><a>Users</a></li>
+                <li (click)="logout()"><a>Logout</a></li>
+              </ul> -->
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <a [routerLink]="['/']" class="nav-link {{route=='' ? 'active' : ''}}">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="['/roles']" class="nav-link {{route=='/roles' ? 'active' : ''}}">Roles</a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="['/permissions']" class="nav-link {{route=='/permissions' ? 'active' : ''}}">Permissions</a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="['/users']" class="nav-link {{route=='/users' ? 'active' : ''}}">Users</a>
+                </li>
+                <li class="nav-item" (click)="logout()">
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="{{route=='/login' ? 'col-md-12' : 'col-md-10'}}">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
