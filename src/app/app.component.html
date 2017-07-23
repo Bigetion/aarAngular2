@@ -9,13 +9,6 @@
               <img src="assets/img/aar32.png"> AAR Framework
             </div>
             <div class="box-footer no-padding">
-              <!-- <ul class="nav nav-stacked">
-                <li [routerLink]="['/']" class="{{route=='' ? 'active' : ''}}"><a>Modules</a></li>
-                <li [routerLink]="['/roles']" class="{{route=='/roles' ? 'active' : ''}}"><a>Roles</a></li>
-                <li [routerLink]="['/permissions']" class="{{route=='/permissions' ? 'active' : ''}}"><a>Permissions</a></li>
-                <li [routerLink]="['/users']" class="{{route=='/users' ? 'active' : ''}}"><a>Users</a></li>
-                <li (click)="logout()"><a>Logout</a></li>
-              </ul> -->
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                   <a [routerLink]="['/']" class="nav-link {{route=='' ? 'active' : ''}}">Modules</a>
@@ -28,6 +21,9 @@
                 </li>
                 <li class="nav-item">
                   <a [routerLink]="['/users']" class="nav-link {{route=='/users' ? 'active' : ''}}">Users</a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="['/profile']" class="nav-link {{route=='/profile' ? 'active' : ''}}">Profile</a>
                 </li>
                 <li class="nav-item" (click)="logout()">
                   <a>Logout</a>

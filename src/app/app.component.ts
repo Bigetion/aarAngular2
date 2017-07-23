@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { CookieService } from './shared/services/cookie.service';
 import { GlobalService } from './shared/services/global.service';
 
+import { MainService } from './shared/services/main.service';
+
 /**
  * App Component
  * Top Level Component
@@ -27,11 +29,14 @@ export class AppComponent implements OnInit {
     private location: Location,
     private router: Router,
     private cookieService: CookieService,
-    private globalService: GlobalService
-  ) {
+    private globalService: GlobalService,
+    private mainService: MainService
+  ) { }
+
+  public ngOnInit() {
     this.router.events.subscribe((val) => {
       if (this.location.path() != '') {
-        this.route = location.path();
+        this.route = this.location.path();
       } else {
         this.route = ''
       }
@@ -39,10 +44,12 @@ export class AppComponent implements OnInit {
         
       })
     });
-  }
 
-  public ngOnInit() {
-    
+    this.mainService.getUserInfo()
+      .subscribe((response: any) => {
+        this.appState.set('userInfo', response);
+        this.globalService.set({ userInfo: response });
+      })
   }
 
   logout() {

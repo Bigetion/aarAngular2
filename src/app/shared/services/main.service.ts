@@ -11,6 +11,13 @@ export class MainService {
 
   constructor(public httpService: HttpService) { }
 
+  getUserInfo(): Observable<object> {
+    let data = {
+
+    }
+    return this.httpService.get(this.API_BASE_URL + 'app/getUserInfo', data, "Get User Info");
+  }
+
   getModules(): Observable<object> {
     let data = {
 
