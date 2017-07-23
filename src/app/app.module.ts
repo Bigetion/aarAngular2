@@ -6,7 +6,6 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { ConfirmDialogModule, ConfirmationService, DropdownModule, CheckboxModule } from 'primeng/primeng';
@@ -85,7 +84,6 @@ type StoreType = {
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
-    Ng2SmartTableModule,
     NgxDatatableModule,
     AngularFontAwesomeModule,
     ConfirmDialogModule,

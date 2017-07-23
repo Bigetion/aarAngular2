@@ -1,3 +1,3 @@
 export class AppConfig {
-   public static API_ENDPOINT='http://localhost/aarAPIv1/';
+   public static API_ENDPOINT='http://localhost:8888/aarAPI/';
 }
