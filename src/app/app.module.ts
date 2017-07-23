@@ -34,6 +34,8 @@ import { CookieService } from './shared/services/cookie.service';
 import { MainService } from './shared/services/main.service';
 import { ValidationService } from './shared/services/validation.service';
 
+import { EventsService } from './shared/services/events.service';
+
 import { ControlMessagesComponent } from './shared/components/control-messages.component';
 import { CustomSubmitComponent } from './shared/components/custom-submit.component';
 import { ModalConfirmation } from './shared/components/modal-confirmation.component';
@@ -50,7 +52,8 @@ const APP_PROVIDERS = [
   GlobalService,
   ValidationService,
   ConfirmationService,
-  MainService
+  MainService,
+  EventsService
 ];
 
 type StoreType = {

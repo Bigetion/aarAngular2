@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { CookieService } from './shared/services/cookie.service';
 import { GlobalService } from './shared/services/global.service';
 
+import { EventsService } from './shared/services/events.service';
+
 import { MainService } from './shared/services/main.service';
 
 /**
@@ -24,14 +26,25 @@ import { MainService } from './shared/services/main.service';
 })
 export class AppComponent implements OnInit {
   public route: string;
+  public isLoggedIn: boolean;
   constructor(
     public appState: AppState,
     private location: Location,
     private router: Router,
     private cookieService: CookieService,
     private globalService: GlobalService,
-    private mainService: MainService
-  ) { }
+    private mainService: MainService,
+    private eventsService: EventsService
+  ) {
+    // this.globalService.dataChange.subscribe((data: object) => {
+    //   console.log(data);
+    // })
+  }
+
+  private setLogin(condition) {
+    this.isLoggedIn = condition;
+    this.appState.set('isLoggedIn', condition);
+  }
 
   public ngOnInit() {
     this.router.events.subscribe((val) => {
@@ -40,19 +53,30 @@ export class AppComponent implements OnInit {
       } else {
         this.route = ''
       }
-      this.globalService.dataChange.subscribe((data: object) => {
-        
-      })
     });
 
     this.mainService.getUserInfo()
       .subscribe((response: any) => {
+        // this.appState.set('userInfo', response);
+        // this.globalService.set({ userInfo: response });
+        this.eventsService.broadcast('onChangeUserInfo', response);
         this.appState.set('userInfo', response);
-        this.globalService.set({ userInfo: response });
       })
+
+    const token = this.cookieService.getCookie('token');
+    if (token) {
+      this.setLogin(true);
+    } else {
+      this.setLogin(false);
+    }
+
+    this.eventsService.on('loggedIn', () => {
+      this.setLogin(true);
+    });
   }
 
   logout() {
+    this.setLogin(false);
     this.cookieService.deleteCookie('token');
     this.router.navigate(['/login']);
   }

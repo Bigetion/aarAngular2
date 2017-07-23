@@ -6,6 +6,8 @@ import { GlobalService } from '../shared/services/global.service';
 import { CookieService } from '../shared/services/cookie.service';
 import * as _ from 'lodash';
 
+import { EventsService } from "../shared/services/events.service";
+
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -22,18 +24,22 @@ export class ProfileComponent implements OnInit {
     username: '',
     roleName: ''
   };
-  constructor(private appState: AppState, private globalService: GlobalService) {
+  constructor(private appState: AppState, private globalService: GlobalService, private eventsService: EventsService) {
   }
 
 
   ngOnInit() {
-    this.globalService.dataChange.subscribe((data: object) => {
-      this.userInfo = this.appState.get('userInfo');
+    // if (this.globalService.data.userInfo) {
+    //   this.userInfo = this.globalService.data.userInfo;
+    // } else {
+    //   this.globalService.dataChange.subscribe((data: any) => {
+    //     this.userInfo = data.userInfo;
+    //   });
+    // }
+    this.userInfo = this.appState.get('userInfo');
+    this.eventsService.on('onChangeUserInfo', (userInfoData) => {
+      this.userInfo = userInfoData;
     });
-    
-    if(this.globalService.data.userInfo){
-      this.userInfo = this.globalService.data.userInfo;
-    }
   }
 
 }
