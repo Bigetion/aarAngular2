@@ -4723,3 +4723,7 @@ input.narrow-input {
 .logo {
   background-color: transparent !important;
 }
+
+.ui-dialog {
+  top: 20% !important;
+}

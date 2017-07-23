@@ -26,11 +26,13 @@ import { HomeComponent } from './home';
 import { RolesComponent } from './roles';
 import { UsersComponent } from './users';
 import { PermissionsComponent } from './permissions';
+import { ProfileComponent } from './profile';
 import { NotFoundComponent } from './not-found';
 
 import { HttpService } from './shared/services/http.service';
 import { GlobalService } from './shared/services/global.service';
 import { CookieService } from './shared/services/cookie.service';
+import { MainService } from './shared/services/main.service';
 import { ValidationService } from './shared/services/validation.service';
 
 import { ControlMessagesComponent } from './shared/components/control-messages.component';
@@ -48,7 +50,8 @@ const APP_PROVIDERS = [
   CookieService,
   GlobalService,
   ValidationService,
-  ConfirmationService
+  ConfirmationService,
+  MainService
 ];
 
 type StoreType = {
@@ -73,6 +76,7 @@ type StoreType = {
     RolesComponent,
     UsersComponent,
     PermissionsComponent,
+    ProfileComponent,
     NotFoundComponent
   ],
   /**
