@@ -3,7 +3,7 @@
   <div>
     <section class="content">
       <div class="row">
-        <div class="col-md-2" *ngIf="sg.currentRoute!='/login' && sg.isLoggedIn">
+        <div class="col-md-2" *ngIf="route!='/login' && isLoggedIn">
           <div class="box box-widget" ng-if="idRole!=2">
             <div class="box-body box-profile" style="font-size: 16px">
               <img src="assets/img/aar32.png"> AAR Framework
@@ -11,19 +11,19 @@
             <div class="box-footer no-padding">
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                  <a [routerLink]="['/']" class="nav-link {{sg.currentRoute=='' ? 'active' : ''}}">Modules</a>
+                  <a [routerLink]="['/']" class="nav-link {{route=='' ? 'active' : ''}}">Modules</a>
                 </li>
                 <li class="nav-item">
-                  <a [routerLink]="['/roles']" class="nav-link {{sg.currentRoute=='/roles' ? 'active' : ''}}">Roles</a>
+                  <a [routerLink]="['/roles']" class="nav-link {{route=='/roles' ? 'active' : ''}}">Roles</a>
                 </li>
                 <li class="nav-item">
-                  <a [routerLink]="['/permissions']" class="nav-link {{sg.currentRoute=='/permissions' ? 'active' : ''}}">Permissions</a>
+                  <a [routerLink]="['/permissions']" class="nav-link {{route=='/permissions' ? 'active' : ''}}">Permissions</a>
                 </li>
                 <li class="nav-item">
-                  <a [routerLink]="['/users']" class="nav-link {{sg.currentRoute=='/users' ? 'active' : ''}}">Users</a>
+                  <a [routerLink]="['/users']" class="nav-link {{route=='/users' ? 'active' : ''}}">Users</a>
                 </li>
                 <li class="nav-item">
-                  <a [routerLink]="['/profile']" class="nav-link {{sg.currentRoute=='/profile' ? 'active' : ''}}">Profile</a>
+                  <a [routerLink]="['/profile']" class="nav-link {{route=='/profile' ? 'active' : ''}}">Profile</a>
                 </li>
                 <li class="nav-item" (click)="logout()">
                   <a>Logout</a>
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div class="{{sg.currentRoute=='/login' ? 'col-md-12' : 'col-md-10'}}">
+        <div class="{{route=='/login' ? 'col-md-12' : 'col-md-10'}}">
           <router-outlet></router-outlet>
         </div>
       </div>

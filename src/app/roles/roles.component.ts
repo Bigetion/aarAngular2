@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, TemplateRef } from '@angular/core';
 import { AppState } from '../app.service';
-import { SimpleGlobal } from 'ng2-simple-global';
 
 import { RolesService } from '../shared/services/roles.service';
 import { ConfirmationService } from 'primeng/primeng';
@@ -34,7 +33,6 @@ export class RolesComponent implements OnInit {
   private selectedRow: any = null;
 
   constructor(
-    private sg: SimpleGlobal,
     private rolesService: RolesService, 
     private fb: FormBuilder, 
     private confirmationService: ConfirmationService

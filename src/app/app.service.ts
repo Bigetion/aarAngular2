@@ -7,7 +7,7 @@ export type InternalStateType = {
 @Injectable()
 export class AppState {
 
-  public _state: InternalStateType = { };
+  public _state: InternalStateType = {};
 
   /**
    * Already return a clone of the current state.
@@ -34,13 +34,18 @@ export class AppState {
     /**
      * Internally mutate our state.
      */
-    return this._state[prop] = value;
+    // return this._state[prop] = value;
+    let newObject : any = {};
+    newObject[prop] = value;
+
+    this._state = Object.assign(this._state, newObject);
+    return this._state;
   }
 
   private _clone(object: InternalStateType) {
     /**
      * Simple object clone.
      */
-    return JSON.parse(JSON.stringify( object ));
+    return JSON.parse(JSON.stringify(object));
   }
 }
