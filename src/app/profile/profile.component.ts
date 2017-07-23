@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppState } from '../app.service';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 import { HttpService } from '../shared/services/http.service';
-import { GlobalService } from '../shared/services/global.service';
 import { CookieService } from '../shared/services/cookie.service';
 import * as _ from 'lodash';
 
@@ -22,17 +22,15 @@ export class ProfileComponent implements OnInit {
     username: '',
     roleName: ''
   };
-  constructor(private appState: AppState, private globalService: GlobalService) {
-  }
+  constructor(
+    private sg: SimpleGlobal,
+    private appState: AppState
+  ) { }
 
 
   ngOnInit() {
-    this.globalService.dataChange.subscribe((data: object) => {
-      this.userInfo = this.appState.get('userInfo');
-    });
-    
-    if(this.globalService.data.userInfo){
-      this.userInfo = this.globalService.data.userInfo;
+    if(this.sg['userInfo'].username && this.sg['userInfo'].roleName){
+      this.userInfo = this.sg['userInfo'];
     }
   }
 

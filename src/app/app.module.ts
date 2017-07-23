@@ -28,8 +28,8 @@ import { PermissionsComponent } from './permissions';
 import { ProfileComponent } from './profile';
 import { NotFoundComponent } from './not-found';
 
+import { SimpleGlobal } from 'ng2-simple-global';
 import { HttpService } from './shared/services/http.service';
-import { GlobalService } from './shared/services/global.service';
 import { CookieService } from './shared/services/cookie.service';
 import { MainService } from './shared/services/main.service';
 import { ValidationService } from './shared/services/validation.service';
@@ -45,9 +45,9 @@ import '../styles/headings.css';
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
+  SimpleGlobal,
   HttpService,
   CookieService,
-  GlobalService,
   ValidationService,
   ConfirmationService,
   MainService

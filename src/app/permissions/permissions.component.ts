@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppState } from '../app.service';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 import { HttpService } from '../shared/services/http.service';
 import { CookieService } from '../shared/services/cookie.service';
@@ -19,7 +20,10 @@ import * as _ from 'lodash';
 })
 export class PermissionsComponent implements OnInit {
   public permissionList: Array<object> = [];
-  constructor(private permissionsService: PermissionsService) { }
+  constructor(
+    private sg: SimpleGlobal,
+    private permissionsService: PermissionsService
+  ) { }
 
   roleList: any[] = [];
   moduleList: any[] = [];

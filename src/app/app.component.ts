@@ -3,11 +3,11 @@
  */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppState } from './app.service';
+import { SimpleGlobal } from 'ng2-simple-global';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { CookieService } from './shared/services/cookie.service';
-import { GlobalService } from './shared/services/global.service';
 
+import { CookieService } from './shared/services/cookie.service';
 import { MainService } from './shared/services/main.service';
 
 /**
@@ -29,32 +29,30 @@ export class AppComponent implements OnInit {
     private location: Location,
     private router: Router,
     private cookieService: CookieService,
-    private globalService: GlobalService,
-    private mainService: MainService
+    private mainService: MainService,
+    private sg: SimpleGlobal
   ) { }
 
   public ngOnInit() {
     this.router.events.subscribe((val) => {
       if (this.location.path() != '') {
-        this.route = this.location.path();
+        this.sg['currentRoute'] = this.location.path();
       } else {
-        this.route = ''
+        this.sg['currentRoute'] = ''
       }
-      this.globalService.dataChange.subscribe((data: object) => {
-        
-      })
     });
 
     this.mainService.getUserInfo()
       .subscribe((response: any) => {
-        this.appState.set('userInfo', response);
-        this.globalService.set({ userInfo: response });
+        if(response.id_role!=2) this.sg['isLoggedIn'] = true;
+        this.sg['userInfo'] = response;
       })
   }
 
   logout() {
     this.cookieService.deleteCookie('token');
     this.router.navigate(['/login']);
+    this.sg['isLoggedIn'] = false;
   }
 
 }

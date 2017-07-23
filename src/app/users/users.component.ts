@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, TemplateRef } from '@angular/core';
 import { AppState } from '../app.service';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 import { UsersService } from '../shared/services/users.service';
 import { RolesService } from '../shared/services/roles.service';
@@ -35,7 +36,13 @@ export class UsersComponent implements OnInit {
 
   private selectedRow: any = null;
 
-  constructor(private usersService: UsersService, private rolesService: RolesService, private fb: FormBuilder, private confirmationService: ConfirmationService) { }
+  constructor(
+    private sg: SimpleGlobal,
+    private usersService: UsersService, 
+    private rolesService: RolesService, 
+    private fb: FormBuilder, 
+    private confirmationService: ConfirmationService
+  ) { }
 
   newFbGroupUserAdd() {
     return this.fb.group({

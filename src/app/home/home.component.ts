@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppState } from '../app.service';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 import { MainService } from '../shared/services/main.service';
 
@@ -14,7 +15,10 @@ import { MainService } from '../shared/services/main.service';
 })
 export class HomeComponent implements OnInit {
   public moduleList: any[] = [];
-  constructor(private mainService: MainService) { }
+  constructor(
+    private sg: SimpleGlobal,
+    private mainService: MainService, 
+  ) { }
 
   ngOnInit() {
     this.getModules();
