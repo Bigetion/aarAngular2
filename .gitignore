@@ -72,3 +72,5 @@ dll/
 *.shim.ngstyle.ts
 
 .history
+
+src/app/shared/config/app.config.ts
