@@ -20,24 +20,28 @@
     <div class="box-header with-border">
       <h3 class="box-title">Change Password</h3>
     </div>
-    <form novalidate>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmitChangePassword(myForm.value, myForm.valid)">
       <div class="box-body">
         <div class="form-group">
           <label for="roleName">Current Password</label>
-          <input type="text" class="form-control" placeholder="Current Password"/>
+          <input type="password" class="form-control" placeholder="Current Password" formControlName="password"/>
+          <control-messages [control]="myForm.controls.password"></control-messages>
         </div>
         <div class="form-group">
           <label for="roleName">New Password</label>
-          <input type="text" class="form-control" placeholder="New Password"/>
+          <input type="password" class="form-control" placeholder="New Password" formControlName="newPassword"/>
+          <control-messages [control]="myForm.controls.newPassword"></control-messages>
         </div>
         <div class="form-group">
           <label for="roleName">Confirm Password</label>
-          <input type="text" class="form-control" placeholder="Confirm Password"/>
+          <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword"/>
+          <control-messages [control]="myForm.controls.confirmPassword"></control-messages>
         </div>
       </div>
       <div class="box-footer">
-        <button type="button" class="btn btn-success">Submit New Password</button>
+        <button type="submit" class="btn btn-success">Submit New Password</button>
       </div>
     </form>
   </div>
+  <div *ngIf="response.error_message" class="alert alert-danger" style="margin-top:10px">{{response.error_message}}</div>
 </div>

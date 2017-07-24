@@ -8,7 +8,7 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
-import { ConfirmDialogModule, ConfirmationService, DropdownModule, CheckboxModule } from 'primeng/primeng';
+import { ConfirmDialogModule, ConfirmationService, DropdownModule, CheckboxModule, GrowlModule } from 'primeng/primeng';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -87,12 +87,13 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true }),
+    RouterModule.forRoot(ROUTES, { useHash: false }),
     NgxDatatableModule,
     AngularFontAwesomeModule,
     ConfirmDialogModule,
     DropdownModule,
     CheckboxModule,
+    GrowlModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

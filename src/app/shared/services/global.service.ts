@@ -29,7 +29,7 @@ export class GlobalService {
 
   set(newObj: object) {
     this.globalData = Object.assign(this.globalData, newObj);
-    this.data.emit(this.globalData);
+    this.data.emit(newObj);
   }
 
   on(name, listener) {

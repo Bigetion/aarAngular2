@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     if (isValid) {
       this.mainService.login(model.username, model.password)
         .subscribe((response: any) => {
-          this.response = response;
+          this.response['error_message'] = false;
           if (response.success_message) {
             this.cookieService.setCookie({
               name: 'token',
@@ -64,6 +64,8 @@ export class LoginComponent implements OnInit {
 
             this.globalService.set({ isLoggedIn: true });
             this.router.navigate(['']);
+          }else{
+            this.response['error_message'] = 'The username or password you entered is incorrect.';
           }
         });
     }

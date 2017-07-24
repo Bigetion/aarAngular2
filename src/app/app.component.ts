@@ -7,9 +7,9 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { CookieService } from './shared/services/cookie.service';
 import { GlobalService } from './shared/services/global.service';
-
+import { Notification } from './shared/factories/notification';
 import { MainService } from './shared/services/main.service';
-
+import { Message } from 'primeng/primeng';
 /**
  * App Component
  * Top Level Component
@@ -25,6 +25,8 @@ import { MainService } from './shared/services/main.service';
 export class AppComponent implements OnInit {
   public route: string;
   public isLoggedIn: boolean;
+  public notificationMessages: Message;
+
   constructor(
     public appState: AppState,
     private location: Location,
@@ -47,6 +49,10 @@ export class AppComponent implements OnInit {
       if (data.isLoggedIn) {
         this.setLogin(data.isLoggedIn);
         this.getUserInfo();
+      }
+
+      if(data.notificationMessages){
+        this.notificationMessages = [data.notificationMessages];
       }
     });
 

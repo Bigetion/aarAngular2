@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class ValidationService {
     static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
         let config = {
-            'required': 'Required',
+            'required': 'This field is required',
             'invalidEmailAddress': 'Invalid email address',
             'minlength': `Minimum length ${validatorValue.requiredLength}`
         };
