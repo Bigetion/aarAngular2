@@ -87,7 +87,7 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: false }),
+    RouterModule.forRoot(ROUTES, { useHash: true }),
     NgxDatatableModule,
     AngularFontAwesomeModule,
     ConfirmDialogModule,

@@ -6,7 +6,7 @@ import { MainService } from '../shared/services/main.service';
 @Component({
   selector: 'home',
   providers: [
-    
+
   ],
   styleUrls: ['./home.component.css'],
   templateUrl: './home.component.html',
@@ -15,7 +15,7 @@ import { MainService } from '../shared/services/main.service';
 export class HomeComponent implements OnInit {
   public moduleList: any[] = [];
   constructor(
-    private mainService: MainService, 
+    private mainService: MainService,
   ) { }
 
   ngOnInit() {
@@ -25,14 +25,14 @@ export class HomeComponent implements OnInit {
   getModules() {
     this.mainService.getModules()
       .subscribe((response: any) => {
-        if (response.project) {
-          response.project.forEach((item: string) => {
+        if (response) {
+          for (let item in response) {
             let newItem = {
               'name': item,
               'controller': response[item]
             }
             this.moduleList.push(newItem);
-          })
+          }
         }
       })
   }
