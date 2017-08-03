@@ -3,12 +3,13 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
+import { AppState } from './../../app.service';
 import { CookieService } from './cookie.service';
 
 @Injectable()
 export class HttpService {
 
-  constructor(private http: Http, private cookieService: CookieService, private router: Router) { }
+  constructor(private http: Http, private cookieService: CookieService, private router: Router, private appState: AppState) { }
 
 
   public get(url: string, data: object, actionName: string): Observable<object> {
@@ -30,6 +31,8 @@ export class HttpService {
     return this.http.post(url, body, options)
       .map((res: Response) => {
         if (res.json().require_login) {
+          this.cookieService.deleteCookie('token');
+          this.appState.set('isLoggedIn', false);
           this.router.navigate(['/login']);
         }
         return res.json();
