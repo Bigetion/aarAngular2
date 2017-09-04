@@ -33,8 +33,8 @@ export class RolesComponent implements OnInit {
   private selectedRow: any = null;
 
   constructor(
-    private rolesService: RolesService, 
-    private fb: FormBuilder, 
+    private rolesService: RolesService,
+    private fb: FormBuilder,
     private confirmationService: ConfirmationService
   ) { }
 
@@ -65,7 +65,8 @@ export class RolesComponent implements OnInit {
     }, {
       prop: 'action',
       name: 'Action',
-      cellTemplate: this.actionTmpl
+      cellTemplate: this.actionTmpl,
+      maxWidth: 80
     }]
     this.myForm = this.newFbGroupRoleAdd();
   }

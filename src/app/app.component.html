@@ -52,10 +52,10 @@
           <li class="{{route=='/roles' ? 'active' : ''}}"><a [routerLink]="['/roles']"><i class="md md-assignment"></i> Roles</a></li>
           <li class="{{route=='/users' ? 'active' : ''}}"><a [routerLink]="['/users']"><i class="md md-account-child"></i> Users</a></li>
           <li class="{{route=='/permissions' ? 'active' : ''}}"><a [routerLink]="['/permissions']"><i class="md md-lock"></i> Permissions</a></li>
-          <li class="sub-menu {{route=='/posts' ? 'active' : ''}}">
+          <li class="sub-menu {{route=='/posts' ? 'toggled active' : ''}}">
             <a href="#"><i class="md md-event"></i>Posts</a>
             <ul>
-                <li class="{{route=='/posts' ? 'active' : ''}}"><a [routerLink]="['/posts']">All Posts</a></li>
+                <li><a [routerLink]="['/posts']" class="{{route=='/posts' ? 'active' : ''}}">All Posts</a></li>
                 <li><a href="animations.html">Categories</a></li>
             </ul>
         </li>

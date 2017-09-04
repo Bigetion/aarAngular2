@@ -68,7 +68,7 @@ export class UsersComponent implements OnInit {
       prop: 'action',
       name: 'Action',
       cellTemplate: this.actionTmpl,
-      width: 20
+      maxWidth: 80
     }];
 
     this.myForm = this.newFbGroupUserAdd();
