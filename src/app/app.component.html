@@ -1,42 +1,72 @@
-<div class="content-wrapper">
-  <p-confirmDialog></p-confirmDialog>
-  <p-growl [(value)]="notificationMessages"></p-growl>
-  <div>
-    <section class="content">
-      <div class="row">
-        <div class="col-md-2" *ngIf="route!='/login' && isLoggedIn">
-          <div class="box box-widget" ng-if="idRole!=2">
-            <div class="box-body box-profile" style="font-size: 16px">
-              <img src="assets/img/aar32.png"> AAR Framework
-            </div>
-            <div class="box-footer no-padding">
-              <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                  <a [routerLink]="['/']" class="nav-link {{route=='' ? 'active' : ''}}">Modules</a>
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/roles']" class="nav-link {{route=='/roles' ? 'active' : ''}}">Roles</a>
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/permissions']" class="nav-link {{route=='/permissions' ? 'active' : ''}}">Permissions</a>
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/users']" class="nav-link {{route=='/users' ? 'active' : ''}}">Users</a>
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/profile']" class="nav-link {{route=='/profile' ? 'active' : ''}}">Profile</a>
-                </li>
-                <li class="nav-item" (click)="logout()">
-                  <a>Logout</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="{{route=='/login' ? 'col-md-12' : 'col-md-10'}}">
-          <router-outlet></router-outlet>
-        </div>
+<p-confirmDialog></p-confirmDialog>
+<p-growl [(value)]="notificationMessages"></p-growl>
+<header id="header" *ngIf="route!='/login' && isLoggedIn">
+  <ul class="header-inner">
+    <li id="menu-trigger" data-trigger="#sidebar">
+      <div class="line-wrap">
+        <div class="line top"></div>
+        <div class="line center"></div>
+        <div class="line bottom"></div>
       </div>
-    </section>
+    </li>
+
+    <li class="logo hidden-xs">
+        <img class="pull-left m-r-10" src="assets/img/aar32.png" />
+      <a >AAR Framework</a>
+    </li>
+  </ul>
+
+  <!-- Top Search Content -->
+  <div id="top-search-wrap">
+    <input type="text">
+    <i id="top-search-close">&times;</i>
   </div>
-</div>
+</header>
+
+<section id="main">
+  <aside id="sidebar" *ngIf="route!='/login' && isLoggedIn">
+    <div class="sidebar-inner">
+      <div class="si-inner">
+        <div class="profile-menu">
+          <a href="#">
+            <div class="profile-pic">
+              <img src="assets/img/profile-pics/1.jpg" alt="">
+            </div>
+
+            <div class="profile-info">
+              {{userInfo.username || ''}} <i class="md md-arrow-drop-down"></i>
+            </div>
+          </a>
+          <ul class="main-menu">
+            <li>
+              <a [routerLink]="['/profile']"><i class="md md-person"></i> View Profile</a>
+            </li>
+            <li>
+              <a (click)="logout()"><i class="md md-history"></i> Logout</a>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="main-menu">
+          <li class="{{route=='' ? 'active' : ''}}"><a [routerLink]="['/']"><i class="md md-home"></i> Modules</a></li>
+          <li class="{{route=='/roles' ? 'active' : ''}}"><a [routerLink]="['/roles']"><i class="md md-assignment"></i> Roles</a></li>
+          <li class="{{route=='/users' ? 'active' : ''}}"><a [routerLink]="['/users']"><i class="md md-account-child"></i> Users</a></li>
+          <li class="{{route=='/permissions' ? 'active' : ''}}"><a [routerLink]="['/permissions']"><i class="md md-lock"></i> Permissions</a></li>
+          <li class="sub-menu {{route=='/posts' ? 'active' : ''}}">
+            <a href="#"><i class="md md-event"></i>Posts</a>
+            <ul>
+                <li class="{{route=='/posts' ? 'active' : ''}}"><a [routerLink]="['/posts']">All Posts</a></li>
+                <li><a href="animations.html">Categories</a></li>
+            </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <section id="{{route=='/login' ? '' : 'content'}}">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+</section>

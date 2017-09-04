@@ -3,8 +3,8 @@
   <button *ngIf="row.id_user!=1 && row.id_user!=2" class="btn btn-danger btn-xs" (click)="onClickDelete(row)"><fa name="trash"></fa></button>
 </template>
 
-<div class="col-md-12">
-  <h1 class="page-header">Users</h1>
+<div class="block-header">
+  <h2>Users</h2>
 </div>
 
 <div class="col-md-12">
@@ -12,15 +12,15 @@
     <ngx-datatable class="material" [rows]="userList" [columns]="userColumns" [columnMode]="'force'"></ngx-datatable>
     <button style="margin-top:10px" class="btn btn-primary" (click)="onClickIsAdd(true)">Add</button>
   </div>
-  <div class="box box-primary" *ngIf="state.isAdd || state.isEdit">
-    <div class="box-header with-border">
-      <h3 class="box-title">{{state.isAdd ? 'Add' : 'Edit'}}</h3>
+  <div class="card" *ngIf="state.isAdd || state.isEdit">
+    <div class="card-header ch-alt">
+      <h2 class="card-title">{{state.isAdd ? 'Add' : 'Edit'}}</h2>
     </div>
     <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmitMyForm(myForm.value, myForm.valid)">
-      <div class="box-body">
+      <div class="card-body card-padding">
         <div class="form-group">
           <label for="userName">Username</label>
-          <input type="text" class="form-control" placeholder="Role Name" autofocus formControlName="userName" />
+          <input type="text" class="form-control" placeholder="Role Name" formControlName="userName" />
           <control-messages [control]="myForm.controls.userName"></control-messages>
         </div>
         <div class="form-group">
@@ -28,11 +28,11 @@
           <p-dropdown [options]="roleList" formControlName="idRole" (onChange)="onChange()" placeholder="Select role type.." [disabled]=" state.isEdit && (selectedRow.id_user==1 || selectedRow.id_user==2)"></p-dropdown>
           <control-messages [control]="myForm.controls.idRole"></control-messages>
         </div>
-      </div>
-      <div class="box-footer">
-        <button type="submit" class="btn btn-success">Submit</button>
-        <button *ngIf="state.isAdd" type="button" class="btn btn-danger" (click)="onClickIsAdd(false)">Cancel</button>
-        <button *ngIf="state.isEdit" type="button" class="btn btn-danger" (click)="onClickIsEdit(false)">Cancel</button>
+        <div>
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button *ngIf="state.isAdd" type="button" class="btn btn-danger" (click)="onClickIsAdd(false)">Cancel</button>
+          <button *ngIf="state.isEdit" type="button" class="btn btn-danger" (click)="onClickIsEdit(false)">Cancel</button>
+        </div>
       </div>
     </form>
   </div>

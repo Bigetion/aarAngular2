@@ -1,7 +1,7 @@
 /**
  * Angular 2 decorators and services
  */
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ElementRef } from '@angular/core';
 import { AppState } from './app.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
@@ -26,6 +26,8 @@ export class AppComponent implements OnInit {
   public route: string;
   public isLoggedIn: boolean;
   public notificationMessages: Message;
+  public isJqueryLoad: boolean;
+  public userInfo: any;
 
   constructor(
     public appState: AppState,
@@ -34,15 +36,25 @@ export class AppComponent implements OnInit {
     private cookieService: CookieService,
     private globalService: GlobalService,
     private mainService: MainService,
+    private element: ElementRef
   ) { }
 
   public ngOnInit() {
+    this.userInfo = {
+      username: 'Guest',
+      idRole: 2
+    }
     this.router.events.subscribe((val) => {
       if (this.location.path() != '') {
         this.route = this.location.path();
       } else {
         this.route = ''
       }
+      if (!this.isJqueryLoad) {
+        this.loadScript("assets/js/functions.js");
+        this.isJqueryLoad = true;
+      }
+      let sidebar = this.element.nativeElement.querySelector('#sidebar');
     });
 
     this.globalService.data.subscribe((data: any) => {
@@ -51,7 +63,7 @@ export class AppComponent implements OnInit {
         this.getUserInfo();
       }
 
-      if(data.notificationMessages){
+      if (data.notificationMessages) {
         this.notificationMessages = [data.notificationMessages];
       }
     });
@@ -69,6 +81,7 @@ export class AppComponent implements OnInit {
   private getUserInfo() {
     this.mainService.getUserInfo()
       .subscribe((response: any) => {
+        this.userInfo = response;
         this.appState.set('userInfo', response);
         this.globalService.broadcast('onChangeUserInfo', response);
       })
@@ -83,6 +96,15 @@ export class AppComponent implements OnInit {
     this.setLogin(false);
     this.cookieService.deleteCookie('token');
     this.router.navigate(['/login']);
+  }
+
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script')
+      scriptElement.src = scriptUrl
+      scriptElement.onload = resolve
+      document.body.appendChild(scriptElement)
+    })
   }
 
 }

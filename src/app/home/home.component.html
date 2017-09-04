@@ -1,18 +1,20 @@
-<div class="col-md-12">
-  <h1 class="page-header">Modules</h1>
+<div class="block-header">
+  <h2>Modules</h2>
 </div>
-
 <div class="col-md-4" *ngFor="let item of moduleList">
-  <div class="box box-warning">
-    <div class="box-body" style="font-size: 16px">
-      <strong>Module : {{item.name}}</strong>
+  <div class="card">
+    <div class="card-header ch-alt">
+      <h2>Module : {{item.name}}</h2>
     </div>
-    <div class="box-footer no-padding">
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item" *ngFor="let itemChild of item.controller">
-          <a>Controller_{{itemChild}}</a>
-        </li>
-      </ul>
+
+    <div class="card-body table-responsive" tabindex="0" style="overflow: hidden; outline: none;">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let itemChild of item.controller">
+            <td>Controller_{{itemChild}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

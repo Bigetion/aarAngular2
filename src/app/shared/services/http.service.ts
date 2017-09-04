@@ -59,6 +59,8 @@ export class HttpService {
     return this.http.post(url, body, options)
       .map((res: Response) => {
         if (res.json().require_login) {
+          this.cookieService.deleteCookie('token');
+          this.appState.set('isLoggedIn', false);
           this.router.navigate(['/login']);
         }
         return res.json();

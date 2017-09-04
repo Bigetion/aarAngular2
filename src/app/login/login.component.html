@@ -1,26 +1,29 @@
-<div class="login-page">
-  <div class="login-box">
-    <div class="login-logo">
-      <img src="assets/img/aar.png" /> AAR Framework
+<div class="col-md-4"></div>
+<div class="col-md-4">
+  <div class="card">
+    <div class="card-header">
+      <img class="pull-left m-r-10" src="assets/img/aar.png" />
+      <h2 class="m-t-10">AAR Framework Login</h2>
     </div>
-    <div class="login-box-body" style="position:relative">
-      <p class="login-box-msg">Sign in to start your session</p>
+    <div class="card-body card-padding">
       <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm.value, myForm.valid)">
         <div class="form-group">
-          <input type="text" class="form-control input-lg" placeholder="Username" autofocus style="font-size:20px" formControlName="username"/>
-          <control-messages [control]="myForm.controls.username"></control-messages>
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control input-lg" placeholder="Password" style="font-size:20px" formControlName="password"/>
-          <control-messages [control]="myForm.controls.password"></control-messages>
-        </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <div>
+            <input type="text" class="form-control input-lg" placeholder="Username" formControlName="username" />
+            <control-messages [control]="myForm.controls.username"></control-messages>
           </div>
         </div>
+
+        <div class="form-group">
+          <div>
+            <input type="password" class="form-control input-lg" placeholder="Password" formControlName="password" />
+            <control-messages [control]="myForm.controls.password"></control-messages>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
       </form>
     </div>
-    <div *ngIf="response.error_message" class="alert alert-danger mt-10" style="margin-top:10px">{{response.error_message}}</div>
   </div>
+  <div *ngIf="response.error_message" class="alert alert-danger m-t-10">{{response.error_message}}</div>
 </div>
+<div class="col-md-4"></div>

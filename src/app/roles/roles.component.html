@@ -2,8 +2,8 @@
   <button *ngIf="row.id_role!=1 && row.id_role!=2" class="btn btn-primary btn-xs" (click)="onCLickIsEdit(true, row)"><fa name="pencil"></fa></button>
   <button *ngIf="row.id_role!=1 && row.id_role!=2" class="btn btn-danger btn-xs" (click)="onClickDelete(row)"><fa name="trash"></fa></button>
 </template>
-<div class="col-md-12">
-  <h1 class="page-header">Roles</h1>
+<div class="block-header">
+  <h2>Roles</h2>
 </div>
 <div class="col-md-12">
   <div *ngIf="!state.isAdd && !state.isEdit">
@@ -11,15 +11,15 @@
     <button style="margin-top:10px" class="btn btn-primary" (click)="onClickIsAdd(true)">Add</button>
   </div>
 
-  <div class="box box-primary" *ngIf="state.isAdd || state.isEdit">
-    <div class="box-header with-border">
-      <h3 class="box-title">{{state.isAdd ? 'Add' : 'Edit'}}</h3>
+  <div class="card card-primary" *ngIf="state.isAdd || state.isEdit">
+    <div class="card-header ch-alt">
+      <h2 class="card-title">{{state.isAdd ? 'Add' : 'Edit'}}</h2>
     </div>
     <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmitMyForm(myForm.value, myForm.valid)">
-      <div class="box-body">
+      <div class="card-body card-padding">
         <div class="form-group">
           <label for="roleName">Role Name</label>
-          <input type="text" class="form-control" placeholder="Role Name" autofocus formControlName="roleName" />
+          <input type="text" class="form-control" placeholder="Role Name" formControlName="roleName" />
           <control-messages [control]="myForm.controls.roleName"></control-messages>
         </div>
         <div class="form-group">
@@ -27,11 +27,11 @@
           <textarea class="form-control" placeholder="Description" formControlName="description"></textarea>
           <control-messages [control]="myForm.controls.description"></control-messages>
         </div>
-      </div>
-      <div class="box-footer">
-        <button type="submit" class="btn btn-success">Submit</button>
-        <button *ngIf="state.isAdd" type="button" class="btn btn-danger" (click)="onClickIsAdd(false)">Cancel</button>
-        <button *ngIf="state.isEdit" type="button" class="btn btn-danger" (click)="onCLickIsEdit(false)">Cancel</button>
+        <div>
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button *ngIf="state.isAdd" type="button" class="btn btn-danger" (click)="onClickIsAdd(false)">Cancel</button>
+          <button *ngIf="state.isEdit" type="button" class="btn btn-danger" (click)="onCLickIsEdit(false)">Cancel</button>
+        </div>
       </div>
     </form>
   </div>

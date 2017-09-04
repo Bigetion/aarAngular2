@@ -5,7 +5,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 @import "~primeng/resources/themes/omega/theme.css";
-@import "~primeng/resources/primeng.min.css";
+@import "~primeng/resources/primeng.css";
+
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~froala-editor/css/froala_editor.pkgd.min.css';
+@import '~froala-editor/css/froala_style.min.css';
 
 ul {
   margin : 0;
@@ -74,14 +78,6 @@ mat-button {
   border-top: none;
 }
 
-.ui-dropdown {
-  width: 100% !important;
-  padding: 3px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
-}
-
-.ui-dropdown .ui-dropdown-trigger .fa {
-  margin-top: 10px;
+.ui-dialog > .ui-widget-header {
+  background-color: #fff !important;
 }

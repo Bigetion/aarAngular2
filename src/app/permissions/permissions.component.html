@@ -1,5 +1,5 @@
-<div class="col-md-12">
-  <h1 class="page-header">Permissions</h1>
+<div class="block-header">
+  <h2>Permissions</h2>
 </div>
 <div class="col-md-12">
   <table class="table table-striped panel">
@@ -16,7 +16,8 @@
       <tr *ngFor="let functionItem of module.functionList">
         <td>{{module.moduleName+'/'+module.controllerName+'/'+functionItem}}</td>
         <td *ngFor="let role of roleList">
-          <p-checkbox [disabled]="role.id_role==1" binary="true" [(ngModel)]="functionModel[role.id_role][module.moduleName+'.'+module.controllerName+'.'+functionItem]" (click)="onChangeCheckBox(role.id_role,module.moduleName+'.'+module.controllerName+'.'+functionItem)"></p-checkbox>
+          <p-checkbox [disabled]="role.id_role==1" binary="true" [(ngModel)]="functionModel[role.id_role][module.moduleName+'.'+module.controllerName+'.'+functionItem]"
+            (click)="onChangeCheckBox(role.id_role,module.moduleName+'.'+module.controllerName+'.'+functionItem)"></p-checkbox>
         </td>
       </tr>
     </tbody>

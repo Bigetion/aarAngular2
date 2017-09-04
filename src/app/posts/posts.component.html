@@ -1,0 +1,44 @@
+<template #actionTmpl let-row="row" let-value="value" let-i="index">
+  <button class="btn btn-primary btn-xs" (click)="onClickIsEdit(true, row)"><fa name="pencil"></fa></button>
+  <button *ngIf="row.id_post!=1 && row.id_post!=2" class="btn btn-danger btn-xs" (click)="onClickDelete(row)"><fa name="trash"></fa></button>
+</template>
+
+<div class="block-header">
+  <h2>All Posts</h2>
+</div>
+
+<div class="col-md-12">
+  <div *ngIf="!state.isAdd && !state.isEdit">
+    <ngx-datatable class="material" [rows]="postList" [columns]="postColumns" [columnMode]="'force'"></ngx-datatable>
+    <button style="margin-top:10px" class="btn btn-primary" (click)="onClickIsAdd(true)">Add</button>
+  </div>
+  <div class="card" *ngIf="state.isAdd || state.isEdit">
+    <div class="card-header ch-alt">
+      <h2 class="card-title">{{state.isAdd ? 'Add' : 'Edit'}}</h2>
+    </div>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmitMyForm(myForm.value, myForm.valid)">
+      <div class="card-body card-padding">
+        <div class="form-group">
+          <label for="postTitle">Post Title</label>
+          <input type="text" class="form-control" placeholder="Post Title" formControlName="postTitle" />
+          <control-messages [control]="myForm.controls.postTitle"></control-messages>
+        </div>
+        <div class="form-group">
+          <label for="postContent">Post Content</label>
+          <textarea [froalaEditor] class="form-control" formControlName="postContent"></textarea>
+          <control-messages [control]="myForm.controls.postContent"></control-messages>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea rows="5" class="form-control" placeholder="Description" formControlName="description"></textarea>
+          <control-messages [control]="myForm.controls.description"></control-messages>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button *ngIf="state.isAdd" type="button" class="btn btn-danger" (click)="onClickIsAdd(false)">Cancel</button>
+          <button *ngIf="state.isEdit" type="button" class="btn btn-danger" (click)="onClickIsEdit(false)">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -8,7 +8,9 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
-import { ConfirmDialogModule, ConfirmationService, DropdownModule, CheckboxModule, GrowlModule } from 'primeng/primeng';
+import { ConfirmDialogModule, ConfirmationService, DropdownModule, CheckboxModule, GrowlModule, PanelModule } from 'primeng/primeng';
+import "froala-editor/js/froala_editor.pkgd.min.js";
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -26,6 +28,7 @@ import { RolesComponent } from './roles';
 import { UsersComponent } from './users';
 import { PermissionsComponent } from './permissions';
 import { ProfileComponent } from './profile';
+import { PostsComponent } from './posts';
 import { NotFoundComponent } from './not-found';
 
 import { HttpService } from './shared/services/http.service';
@@ -76,6 +79,7 @@ type StoreType = {
     UsersComponent,
     PermissionsComponent,
     ProfileComponent,
+    PostsComponent,
     NotFoundComponent
   ],
   /**
@@ -93,7 +97,10 @@ type StoreType = {
     ConfirmDialogModule,
     DropdownModule,
     CheckboxModule,
-    GrowlModule
+    GrowlModule,
+    PanelModule,
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot(),
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
